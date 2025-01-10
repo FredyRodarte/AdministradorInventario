@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Usuario{% endblock %}
+
+{% block content %}
+<div>
+    <div class="titulo">
+        <h2>Agregar Usuario</h2>
+    </div>
+    <div class="formulario-usuarios" id="formulario">
+        
+        <form action="{{ url_for('agregar_usuario') }}" method="POST" class="form-usuarios">
+
+            <label for="nombre_user">Nombre:</label>
+            <input type="text" name="nombre_user" id="nombre_user" required>
+
+            <label for="nickname_user">Nombre de usuario:</label>
+            <input type="text" name="nickname_user" id="nickname_user" required>
+
+            <label for="">Contraseña:</label>
+            <input type="text" name="contraseña_user" id="contraseña_user" required>
+
+            <label for="">Rol:</label>
+            <select name="rol_user" id="rol_user">
+                <option value="">Selecciona una opción</option>
+                <option value="administrador">Administrador</option>
+                <option value="almacenista">Almacenista</option>
+            </select>
+
+            <button class="primario" type="button" onclick="guardarInfo()">Guardar</button>
+            <button class="secundario" type="button" onclick="cancelarUsuario()">Cancelar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

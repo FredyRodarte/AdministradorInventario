@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Modificar Usuario{% endblock %}
+
+{% block content %}
+<div>
+    <div class="titulo">
+        <h2>Modificar Categoria</h2>
+    </div>
+    <div class="formulario-categoria" id="formulario">
+        
+        <form action="{{ url_for('guardar_categoria') }}" method="POST" class="form-editar-categoria">
+            <input type="hidden" name="editar_idCategoria" value="{{ categoria.id_categoria }}">
+    
+            <label for="nombre_user">Nombre:</label>
+            <input type="text" name="editar_nombre_cat" id="editar_nombre_cat" value="{{ categoria.nombre }}" required>
+    
+            <label for="nickname_user">descripcion:</label>
+            <input type="text" name="editar_descripcion_cat" id="editar_descripcion_cat" value="{{ categoria.descripcion }}" required>
+    
+            <button class="primario" type="submit" onclick="">Guardar</button>
+            <button class="secundario" type="button" onclick="cancelarEditarCat()">Cancelar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

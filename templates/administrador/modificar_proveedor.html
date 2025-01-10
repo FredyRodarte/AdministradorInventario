@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Modificar Proveedor - Administrador{% endblock %}
+
+{% block content %}
+<body>
+    <h1>Modificar Proveedor</h1>
+    <form class="form_mod" action="/admin/modificar_proveedor/{{ proveedor.id_proveedor }}" method="POST">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" value="{{ proveedor.nombre }}" required>
+      <br>
+      <label for="contacto">Contacto:</label>
+      <input type="text" id="contacto" name="contacto" value="{{ proveedor.contacto }}">
+      <br>
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" name="telefono" value="{{ proveedor.telefono }}">
+      <br>
+      <label for="direccion">Dirección:</label>
+      <textarea id="direccion" name="direccion">{{ proveedor.direccion }}</textarea>
+      <br>
+      <button type="submit">Guardar Cambios</button>
+      <a href="/admin/proveedores" class="btn-secondary">Cancelar</a>
+    </form>
+  </body>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Movimientos - Administrador{% endblock %}
+
+{% block content %}
+<div class="contenedor">
+    <div class="titulo">
+        <h2>Gestionar Movimientos de Inventario</h2>
+    </div>
+    <div class="contendio">
+        <div>
+            <button class="agregar" id="agregar-movimiento" onclick="agregarMovimiento()">Agregar movimiento</button>
+        </div>
+        <div>
+            <table class="tabla-usuarios" id="tabla">
+                <thead class="tabla-cabecera" id="cabecera">
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Usuario</th>
+                        <th>Comentarios</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if movimientos%}
+                        {% for mov in movimientos %}
+                        <tr>
+                            <td>{{ mov.id_movimiento }}</td>
+                            <td>{{ mov.fecha }}</td>
+                            <td>{{ mov.tipo }}</td>
+                            <td>{{ mov.nombre_producto }}</td>
+                            <td>{{ mov.cantidad }}</td>
+                            <td>{{ mov.nombre_usuario }}</td>
+                            <td>{{ mov.comentarios }}</td>
+                            <td>
+                                <button class="editar-usuario" id="accion" onclick="editarMov('{{ mov.id_movimiento }}')">Editar</button>
+                                <button class="eliminar-usuario" id="accion" onclick="eliminarMov('{{ mov.id_movimiento }}')" >Eliminar</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="6">No hay Movimientos registrados</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

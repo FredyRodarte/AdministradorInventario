@@ -1,0 +1,118 @@
+.contenedor{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.titulo{
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#tabla{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#tabla th, #tabla td{
+    border: 1px solid #ddd;
+    padding:8px;
+    text-align: center;
+}
+
+#tabla th{
+    background-color: #88a3bf;
+    color: white;
+}
+
+/* Boton Agregar para todos los formularios*/
+.agregar{
+    margin-right: 10px;
+    padding: 10px 15px;
+    background-color: #1ABC9C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* Para todos los botones */
+button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+button:hover{
+    background-color: #0056b3;
+}
+/*--------------------------------*/
+/* Modal Agregar-Editar */
+#formulario{
+    max-width: 600px;
+    margin: 0 auto;
+    background: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+#formulario label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#formulario input, #formulario textarea{
+    width: 96%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;    
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#formulario button{
+    padding: 10px 15px;
+    background-color: #1ABC9C;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#formulario button:hover{
+    background-color: #0056b3;
+}
+
+#rol_user {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+#rol_user::after {
+    content: '▼'; /* Flecha personalizada */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #999;
+}

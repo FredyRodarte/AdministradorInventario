@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Movimiento{% endblock %}
+
+{% block content %}
+<div>
+    <div class="titulo">
+        <h2>Modificar Movimiento</h2>
+    </div>
+    <div class="formulario-movimientos" id="formulario">
+        
+        <form action="{{ url_for('guardar_movimiento') }}" method="POST" class="form-editar-movimientos">
+            <input type="hidden" name="editar_idMov" value="{{movimiento.id_movimiento}}">
+
+            <label for="fecha_mov">Fecha:</label>
+            <input type="date" name="editar_fechaMov" id="editar_fechaMov" required value="{{ movimiento.fecha }}">
+
+            <label for="nickname_user">Tipo de movimiento:</label>
+            <select name="editar_tipoMov" id="rol_user" required>
+                <option value="" disabled >Selecciona una opcion</option>
+                <option value="entrada" {% if movimiento.tipo == 'entrada' %} selected {% endif %}>Entrada</option>
+                <option value="salida" {% if movimiento.tipo == 'salida' %} selected {% endif %}>Salida</option>
+            </select>
+
+            <label for="producto_mov">Producto:</label>
+            <select name="editar_productoMov" id="rol_user">
+                <option value="" disabled>Selecciona una opción</option>
+                {% for producto in productos %}
+                    <option value="{{ producto.id_producto }}"{% if producto.id_producto == movimiento.producto_id %}selected{% endif %}>{{ producto.nombre }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="cantidad_mov">Cantidad:</label>
+            <input type="number" id="editar_cantidadMov" name="editar_cantidadMov" min="1" required value="{{ movimiento.cantidad }}">
+
+            <label for="usuario_mov">Usuario:</label>
+            <select name="editar_usuarioMov" id="rol_user">
+                <option value="" disabled>Selecciona una opción</option>
+                {% for usuario in usuarios %}
+                    <option value="{{ usuario.id_usuario }}"{% if usuario.id_usuario == movimiento.usuario_id %}selected{% endif %}>{{ usuario.nombre }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="comentario_mov">Comentarios:</label>
+            <textarea name="editar_comentarioMov" id="editar_comentarioMov" rows="4" cols="50">{{ movimiento.comentarios }}</textarea>
+
+            <button class="primario" type="submit">Guardar</button>
+            <button class="secundario" type="button" onclick="cancelarEditarMov()">Cancelar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

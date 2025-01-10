@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Movimiento{% endblock %}
+
+{% block content %}
+<div>
+    <div class="titulo">
+        <h2>Agregar Movimiento</h2>
+    </div>
+    <div class="formulario-movimientos" id="formulario">
+        
+        <form action="{{ url_for('agregar_movimiento') }}" method="POST" class="form-movimientos">
+
+            <label for="fecha_mov">Fecha:</label>
+            <input type="date" name="fecha_mov" id="fecha_mov" required>
+
+            <label for="nickname_user">Tipo de movimiento:</label>
+            <select name="tipo_mov" id="rol_user" required>
+                <option value="" disabled selected>Selecciona una opcion</option>
+                <option value="entrada">Entrada</option>
+                <option value="salida">Salida</option>
+            </select>
+
+            <label for="producto_mov">Producto:</label>
+            <select name="producto_mov" id="rol_user">
+                <option value="" disabled selected>Selecciona una opción</option>
+                {% for producto in productos %}
+                    <option value="{{ producto.id_producto }}">{{ producto.nombre }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="cantidad_mov">Cantidad:</label>
+            <input type="number" id="cantidad_mov" name="cantidad_mov" min="1" required>
+
+            <label for="usuario_mov">Usuario:</label>
+            <select name="usuario_mov" id="rol_user">
+                <option value="" disabled selected>Selecciona una opción</option>
+                {% for usuario in usuarios %}
+                    <option value="{{ usuario.id_usuario }}">{{ usuario.nombre }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="comentario_mov">Comentarios:</label>
+            <textarea name="comentario_mov" id="comentario_mov" rows="4" cols="50"></textarea>
+
+            <button class="primario" type="button" onclick="guardarMov()">Guardar</button>
+            <button class="secundario" type="button" onclick="cancelarMov()">Cancelar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

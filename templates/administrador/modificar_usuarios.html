@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Modificar Usuario{% endblock %}
+
+{% block content %}
+<div>
+    <div class="titulo">
+        <h2>Modificar Usuario</h2>
+    </div>
+    <div class="formulario-usuarios" id="formulario">
+        
+        <form action="{{ url_for('guardar_usuario') }}" method="POST" class="form-editar-usuarios">
+            <input type="hidden" name="editar_idUsuario" value="{{ usuario.id_usuario }}">
+        
+            <label for="nombre_user">Nombre:</label>
+            <input type="text" name="editar_nombre_user" id="editar_nombre_user" value="{{ usuario.nombre }}" required>
+        
+            <label for="nickname_user">Nombre de usuario:</label>
+            <input type="text" name="editar_nickname_user" id="editar_nickname_user" value="{{ usuario.nickname }}" required>
+        
+            <label for="">Contraseña:</label>
+            <input type="text" name="editar_contraseña_user" id="editar_contraseña_user" value="{{ usuario.contraseña }}" required>
+        
+            <label for="">Rol:</label>
+            <select name="editar_rol_user" id="editar_rol_user">
+                <option value="">Selecciona una opción</option>
+                <option value="administrador" {% if usuario.rol == 'administrador' %}selected{% endif %}>Administrador</option>
+                <option value="almacenista" {% if usuario.rol == 'almacenista' %}selected{% endif %}>Almacenista</option>
+            </select>
+        
+            <button class="primario" type="submit">Guardar</button>
+            <button class="secundario" type="button" onclick="cancelarEditarUsuario()">Cancelar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

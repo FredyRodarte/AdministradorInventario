@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Productos - Administrador{% endblock %}
+
+{% block content %}
+<body>
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Lista de Productos</h1>
+        
+        <!-- Botones de acción -->
+        <div class="action-buttons">
+            <button onclick="window.location.href='/admin/agregar_producto'">Agregar Producto</button>
+        </div>
+
+        <!-- Tabla de productos -->
+        <table class="table-proveedores">
+            <thead>
+                <tr>
+                    <th>ID Producto</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Categoría</th>
+                    <th>Proveedor</th>
+                    <th>Ubicación</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto['id_producto'] }}</td>
+                    <td>{{ producto['nombre_producto'] }}</td>
+                    <td>{{ producto['descripcion'] }}</td>
+                    <td>{{ producto['cantidad'] }}</td>
+                    <td>{{ producto['nombre_categoria'] }}</td>
+                    <td>{{ producto['nombre_proveedor'] }}</td>
+                    <td>{{ producto['ubicacion'] }}</td>
+                    <td>
+                        <!-- Botón para modificar -->
+                        <form class="modify" action="/admin/modificar_producto/{{ producto['id_producto'] }}" method="GET" style="display:inline;">
+                            <button type="submit">Modificar</button>
+                        </form>
+                        <!-- Botón para eliminar -->
+                        <form class="delete" action="/admin/eliminar_producto/{{ producto['id_producto'] }}" method="POST" style="display:inline;">
+                            <button type="submit" onclick="return confirm('¿Estás seguro de eliminar este producto?')">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% if productos|length == 0 %}
+                <tr>
+                    <td colspan="8">No hay productos registrados</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+{% endblock %}

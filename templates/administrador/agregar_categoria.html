@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Categoria{% endblock %}
+
+{% block content %}
+<div>
+    <div class="titulo">
+        <h2>Agregar Categoria</h2>
+    </div>
+    <div class="formulario-categoria" id="formulario">
+        
+        <form action="{{ url_for('agregar_categoria') }}" method="POST" class="form-categorias">
+
+            <label for="nombre_cat">Nombre:</label>
+            <input type="text" name="nombre_cat" id="nombre_cat" required>
+
+            <label for="descripcion_cat">Descripción:</label>
+            <input type="text" name="descripcion_cat" id="descripcion_cat" required>
+
+            <button class="primario" type="button" onclick="guardarCat()">Guardar</button>
+            <button class="secundario" type="button" onclick="cancelarCat()">Cancelar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

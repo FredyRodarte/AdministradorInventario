@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Categorias - Administrador{% endblock %}
+
+{% block content %}
+<div class="contenedor">
+    <div class="titulo">
+        <h2>Gestionar Categorias</h2>
+    </div>
+    <div class="contendio">
+        <div>
+            <button class="agregar" id="agregar-categoria" onclick="agregarCategoria()">Agregar Categoria</button>
+        </div>
+        <div>
+            <table class="tabla-categorias" id="tabla">
+                <thead class="tabla-cabecera" id="cabecera">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if categorias%}
+                        {% for cat in categorias %}
+                        <tr>
+                            <td>{{ cat.id_categoria }}</td>
+                            <td>{{ cat.nombre }}</td>
+                            <td>{{ cat.descripcion }}</td>
+                            <td>
+                                <button class="editar-cat" id="accion" onclick="editarCat('{{ cat.id_categoria }}')">Editar</button>
+                                <button class="eliminar-cat" id="accion" onclick="eliminarCat('{{ cat.id_categoria }}')" >Eliminar</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td colspan="6">No hay categorias registradas</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

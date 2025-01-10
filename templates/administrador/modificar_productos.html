@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Modificar Producto - Administrador{% endblock %}
+
+{% block content %}
+<body>
+    <h1>Modificar Producto</h1>
+    <form class="form_mod" action="/admin/modificar_producto/{{ producto.id_producto }}" method="POST">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ producto.nombre }}" required>
+        <br>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" value="{{ producto.descripcion }}" required>
+        <br>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" value="{{ producto.cantidad }}" required name="points" min="1" step="1">
+        <br>
+        <label for="categoria_id">Categoría:</label>
+        <select id="categoria_id" name="categoria_id" required>
+            {% for categoria in categorias %}
+                <option value="{{ categoria.id_categoria }}" 
+                    {% if categoria.id_categoria == producto.categoria_id %}selected{% endif %}>
+                    {{ categoria.nombre }}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="proveedor_id">Proveedor:</label>
+        <select id="proveedor_id" name="proveedor_id" required>
+            {% for proveedor in proveedores %}
+                <option value="{{ proveedor.id_proveedor }}" 
+                    {% if proveedor.id_proveedor == producto.proveedor_id %}selected{% endif %}>
+                    {{ proveedor.nombre }} de {{ proveedor.contacto }}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="ubicacion">Ubicación:</label>
+        <input type="text" id="ubicacion" name="ubicacion" value="{{ producto.ubicacion }}" required>
+        <br>
+        <button type="submit">Guardar Cambios</button>
+        <a href="/admin/productos" class="btn-secondary">Cancelar</a>
+    </form>
+</body>
+{% endblock %}

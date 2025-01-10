@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Proveedor - Administrador{% endblock %}
+
+{% block content %}
+
+<p>Esta es la página para agregar proveedor.</p>
+<body>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <h1>Agregar Proveedor</h1>
+        <form action="/admin/agregar_proveedor" method="POST" class="form-proveedor">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required>
+  
+          <label for="contacto">Contacto:</label>
+          <input type="text" id="contacto" name="contacto" required>
+  
+          <label for="telefono">Teléfono:</label>
+          <input type="text" id="telefono" name="telefono" required>
+  
+          <label for="direccion">Dirección:</label>
+          <textarea id="direccion" name="direccion" rows="4" required></textarea>
+  
+          <button type="submit">Agregar</button>
+          <a href="/admin/proveedores" class="btn-secondary">Cancelar</a>
+        </form>
+      </div>
+    </div>
+  </body>
+{% endblock %}

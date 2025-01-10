@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% include '../_header.html' %}
+    <title>Inicio - Refaccionaria</title>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="sidebar">
+            {% include '../_sidebar.html' %}
+        </div>
+        <div class="contenido">
+            <h1>Bienvenido, {{username}}!</h1>
+            <p>Esta es la pagina principal del usuario</p>
+        </div>
+        <div class="footer">
+            {% include '../_footer.html' %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% include '_header.html' %}
+    <title>{% block title %}Página{% endblock %}</title>
+</head>
+<body>
+    <div class="sidebar">
+        {% include '_sidebar.html' %}
+    </div>
+
+    <div class="content">
+        {% block content %}
+        <!-- Contenido dinámico se inserta aquí -->
+        {% endblock %}
+    </div>
+
+    {% include '_footer.html' %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class="flashes">
+      {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+</body>
+</html>

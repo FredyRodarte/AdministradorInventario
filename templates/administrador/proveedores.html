@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Proveedores - Administrador{% endblock %}
+
+{% block content %}
+
+
+<body>
+  <!-- Main Content -->
+      <div class="main-content">
+        <h1>Lista de Proveedores</h1>
+        
+        <!-- Botones de acción -->
+        <div class="action-buttons">
+          <button onclick="window.location.href='/admin/agregar_proveedor'">Agregar Proveedor</button>
+        </div>
+  
+        <!-- Tabla de proveedores -->
+        <table class="table-proveedores">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Contacto</th>
+              <th>Teléfono</th>
+              <th>Dirección</th>
+              <th>Acciones</th> <!-- Nueva columna para acciones -->
+            </tr>
+          </thead>
+          <tbody>
+            {% if proveedores %}
+              {% for proveedor in proveedores %}
+              <tr>
+                <td>{{ proveedor.id_proveedor }}</td>
+                <td>{{ proveedor.nombre }}</td>
+                <td>{{ proveedor.contacto }}</td>
+                <td>{{ proveedor.telefono }}</td>
+                <td>{{ proveedor.direccion }}</td>
+                <td>
+                  <!-- Botón para modificar -->
+                  <form class="modify" action="/admin/modificar_proveedor/{{ proveedor.id_proveedor }}" method="GET" style="display:inline;">
+                    <button type="submit">Modificar</button>
+                  </form>
+                  <!-- Botón para eliminar -->
+                  <form class="delete" action="/admin/eliminar_proveedor/{{ proveedor.id_proveedor }}" method="POST" style="display:inline;">
+                    <button type="submit" onclick="return confirm('¿Estás seguro de eliminar este proveedor?')">Eliminar</button>
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            {% else %}
+              <tr>
+                <td colspan="6">No hay proveedores registrados</td>
+              </tr>
+            {% endif %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+</body>
+{% endblock %}

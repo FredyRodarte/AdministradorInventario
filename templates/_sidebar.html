@@ -1,0 +1,12 @@
+<button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+<div class="nombreUsuario">
+    <p>Hola {{nombre}}</p>
+</div>
+<ul>
+    <li><a href="{{ url_for('admin_usuarios') }}"><i class="fas fa-user"></i> Usuarios</a></li>
+    <li><a href="{{ url_for('admin_productos') }}"><i class="fas fa-box"></i> Productos</a></li>
+    <li><a href="{{ url_for('admin_proveedores') }}"><i class="fas fa-truck"></i> Proveedores</a></li>
+    <li><a href="{{ url_for('admin_categorias') }}"><i class="fas fa-list"></i> Categorías</a></li>
+    <li><a href="{{ url_for('admin_movimientos') }}"><i class="fas fa-exchange-alt"></i> Movimientos</a></li>
+    <li><a href="{{ url_for('logout') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+</ul>
